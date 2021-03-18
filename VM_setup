@@ -1,0 +1,44 @@
+# Set up the VM for installing the Nagios
+
+#Step1:
+Create a directory 
+<mkdir nagios>
+#Step2: 
+  1. Set up a VM with ubuntu/xenial64 OS
+  <vagrant init ubuntu/xenial64>
+  2. Open up the vagrantfile using notepad
+  <notepad Vagrantfile>
+  uncommented out the private IP
+            config.vm.network "private_network", ip: "192.168.33.150" //line no. 35 in vagrant file
+  Uncommet out the VM section ( line no.52,57,58)
+                config.vm.provider "virtualbox" do |vb|
+            #   Display the VirtualBox GUI when booting the machine
+            #   vb.gui = true
+            #
+            #   # Customize the amount of memory on the VM:
+               vb.memory = "1024"
+             end
+#Step3:
+  istall the nagios3 , first become root user < sudo su - >
+    a. First  update the system 
+    < apt update -y>
+    b. Install Nagios
+    < apt install -y nagios3>
+    -- while installing there is a pop up window to continue the installation
+    c. Press Enter on the "Internet site"
+    There is a chance to crash the cmder command line depending upon the window version. In this condition, open the normal cmd and run the below command if the indtall has already done in the cmder.
+    <dpkg -reconfigure nagios3-cgi>
+    "dpkg is the software that forms the low-level base of the Debian package management system. It is the default package manager on Ubuntu. You can use dpkg to install, configure, upgrade or remove Debian packages, and retrieve information of these Debian packages."
+    d. Continue the step "c" when the pop up shows up
+    e. set the admin username and password 
+    user: nagiosadmin
+    password: nagiosadmin
+    f. Take the ip and go to the broser and type , ip/nagio3
+    <ip a> 
+  #Step 4:
+   type ip/nagios3 as 192.168.33.150/nagios3 on the browser url . It will ope up the Nagios UI interface.
+   
+   
+   
+   #### Happy Installing and Learning##
+   
