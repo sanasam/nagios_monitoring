@@ -1,4 +1,4 @@
-# nagois_monitoring
+# nagios_monitoring
 # Monitoring using Nagios tool
 # Installation of Nagios
 What is the monitoring?
