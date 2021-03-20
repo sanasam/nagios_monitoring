@@ -18,7 +18,7 @@
     In the intallation configuration setting , follow the below steps\
         1. Click all the option including  " allow all user to write config file" <img width="303" alt="Installation1" src="https://user-images.githubusercontent.com/48834323/111865063-c6e01b00-898a-11eb-9238-b7bd9567b452.png">)\ and then click Next\
         2. The next pop-up window will show to allow the host.\
-            a. We can give the host ip address here. If  we provide the host IP address , then the NSvclient only monitor that pparticular ip address
+            a. We can give the host ip address here. If  we provide the host IP address , then the NSclient only monitor that particular ip address
             b. We can leave it blank. The NSclient will monitor all the available id address\
             c. Leave the password blank as per now. We can add if required\
         Refer the below image for other ramaining  options.\ 
@@ -40,7 +40,7 @@
             [/settings/default]\
             allowed hosts = 127.0.0.1,***192.168.43.XXX*** ( this ip address you will get it by typing ipconfig on the window system cmd) \
     
-## Step3: Restarting the NSclient from Swindow service
+## Step3: Restarting the NSclient from window service
 * Go to the window service from the run box. Find the NSclient form the services and click right mouse and restart the service.\
 Refer below image fore ref..\
 <img width="303" alt="image 5" src="https://user-images.githubusercontent.com/48834323/111866803-06f8cb00-8996-11eb-972d-ac8e43698e8e.png">
@@ -87,3 +87,40 @@ define service{
     check_command           check_win!NSCLIENTVERSION
 
 }
+
+define service{
+    use                     generic-service
+    host_name               window
+    service_description     process_state_monitoring
+    check_command           check_win!PROCSTATE! ' -d SHOWALL -l chrome.exe'
+
+}
+
+define service{
+    use                     generic-service
+    host_name               window
+    service_description     cup_load_monitoring
+    check_command           check_win!CPULOAD! '-l 5,70,90'
+
+}
+
+#### code is broken in .md file. Pl. refer the attached images for ref.
+
+<img width="450" alt="image 5 coding" src="https://user-images.githubusercontent.com/48834323/111868449-e6357300-899f-11eb-9a46-b2554abfe049.png">\
+
+<img width="492" alt="image 5 coding 2" src="https://user-images.githubusercontent.com/48834323/111868690-627c8600-89a1-11eb-911a-f8e8c2efd6d1.png">
+
+
+## Step 5: Running the configuratin file
+* After saving the file, come back to the directory where the *nagios.cfg> is reside.
+* Run the below command:
+a. nagios3 -v nagios.cfg        # to validate the file
+b. service nagios3 reload       # to run the file
+
+* After running the ablove two command, go to the Nagios UI and check the monitoring.
+<img width="658" alt="image 5 coding 2 show" src="https://user-images.githubusercontent.com/48834323/111868834-39102a00-89a2-11eb-9bad-887bb50a7849.png">
+
+
+
+## HAPPY LEARNING 
+
