@@ -113,11 +113,11 @@ define service{
 
 ## Step 5: Running the configuratin file
 * After saving the file, come back to the directory where the *nagios.cfg> is reside.
-* Run the below command:
-a. nagios3 -v nagios.cfg        # to validate the file
-b. service nagios3 reload       # to run the file
+* Run the below command:\
+a. nagios3 -v nagios.cfg        # to validate the file\
+b. service nagios3 reload       # to run the file\
 
-* After running the ablove two command, go to the Nagios UI and check the monitoring.
+* After running the ablove two command, go to the Nagios UI and check the monitoring.\
 <img width="658" alt="image 5 coding 2 show" src="https://user-images.githubusercontent.com/48834323/111868834-39102a00-89a2-11eb-9bad-887bb50a7849.png">
 
 
